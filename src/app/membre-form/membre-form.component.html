@@ -4,7 +4,7 @@
     {{ isEditMode ? 'Modifier le membre' : 'Ajouter un membre' }}
   </h2>
 
-  <!-- GRID -->
+  <!-- INFOS COMMUNES -->
   <div class="form-grid">
 
     <mat-form-field appearance="outline">
@@ -32,7 +32,7 @@
       <input type="file" (change)="onPhotoSelected($event)">
       <img *ngIf="photoPreview" [src]="photoPreview" width="100">
     </div>
-<br><br>
+<br>
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput type="email" formControlName="email">
@@ -50,11 +50,50 @@
     <span class="type-title">Type</span>
     <mat-radio-group formControlName="type">
       <mat-radio-button value="ETUDIANT">Étudiant</mat-radio-button>
-      <mat-radio-button value="ENSEIGNANT">Enseignant</mat-radio-button>
+      <mat-radio-button value="ENSEIGNANTCHERCHEUR">Enseignant</mat-radio-button>
     </mat-radio-group>
   </div>
 
-  <button mat-raised-button color="primary" class="submit-btn">
+  <!-- ====================== ETUDIANT ====================== -->
+  <div *ngIf="form.value.type === 'ETUDIANT'" class="form-grid">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date inscription</mat-label>
+      <input matInput type="date" formControlName="dateInscription">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Diplôme</mat-label>
+      <input matInput formControlName="diplome">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Encadrant</mat-label>
+      <mat-select formControlName="encadrant" [compareWith]="compareEncadrants">
+        <mat-option *ngFor="let e of encadrants" [value]="e">
+          {{ e.nom }} {{ e.prenom }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <!-- ====================== ENSEIGNANT ====================== -->
+  <div *ngIf="form.value.type === 'ENSEIGNANTCHERCHEUR'" class="form-grid">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Grade</mat-label>
+      <input matInput formControlName="grade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Établissement</mat-label>
+      <input matInput formControlName="etablissement">
+    </mat-form-field>
+
+  </div>
+
+  <button mat-raised-button color="primary">
     {{ isEditMode ? 'Modifier' : 'Ajouter' }}
   </button>
 

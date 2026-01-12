@@ -33,11 +33,14 @@ addEnseignant(m: any): Observable<void> {
   GetMemberById(id:string) : Observable<Member>{
     return this.httpClient.get<Member>(`http://localhost:9000/MEMBRE-SERVICE/membres/${id}`);
   }
- updateEtudiant(id: number, data: any): Observable<any> {
+updateEtudiant(id: number, data: any): Observable<any> {
   return this.httpClient.put(`http://localhost:9000/MEMBRE-SERVICE/membres/etudiants/${id}`, data);
 }
-
+ 
 updateEnseignant(id: number, data: any): Observable<any> {
   return this.httpClient.put(`http://localhost:9000/MEMBRE-SERVICE/membres/enseignants/${id}`, data);
 }
+getEncadrants(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`http://localhost:9000/MEMBRE-SERVICE/membres/enseignants`);
+  }
 }
