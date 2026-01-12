@@ -67,7 +67,7 @@
  <ng-container matColumnDef="actions">
   <th mat-header-cell *matHeaderCellDef> Actions </th>
   <td mat-cell *matCellDef="let element">
-   <button routerLink="editMembre/{{element.id}}"><mat-icon color="primary">edit</mat-icon></button>
+   <button [routerLink]="['/editMembre', element.id]"><mat-icon color="primary">edit</mat-icon></button>
       <button (click)="deleteMember(element.id)">
         <mat-icon color="warn">delete</mat-icon>
     </button>

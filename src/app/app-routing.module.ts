@@ -17,7 +17,7 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'membre',
+    path: 'membres',
     component: MembreComponent
   },
   {
@@ -25,11 +25,11 @@ const routes: Routes = [
     component: MembreFormComponent
   },
   {
-    path:':editMembre/:id',
+    path:'editMembre/:id',
     component: MembreFormComponent
   },
   {
-    path: 'outil',
+    path: 'outils',
     component: OutilComponent
   },
   {
@@ -37,11 +37,11 @@ const routes: Routes = [
     component: OutilFormComponent
   },
   {
-    path:':editOutil/:id',
+    path:'editOutil/:id',
     component: OutilFormComponent
   },
   {
-    path: 'evenement',
+    path: 'evenements',
     component: EvenementComponent
   },
   {
@@ -49,11 +49,11 @@ const routes: Routes = [
     component: EvenementFormComponent
   },
   {
-    path:':editEvenement/:id',
+    path:'editEvenement/:id',
     component: EvenementFormComponent
   },
   {
-    path: 'publication',
+    path: 'publications',
     component: PublicationComponent
   },
   {
@@ -61,7 +61,7 @@ const routes: Routes = [
     component: PublicationFormComponent
   },
   {
-    path:':editPublication/:id',
+    path:'editPublication/:id',
     component: PublicationFormComponent
   },
   {

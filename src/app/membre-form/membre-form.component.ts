@@ -153,12 +153,12 @@ sub() {
     if (typeForm === 'ETUDIANT') {
       console.log('dataEtudiant:', dataEtudiant);
       this.MS.updateEtudiant(idCourant, dataEtudiant).subscribe({
-        next: () => this.router.navigate(['']),
+        next: () => this.router.navigate(['/membres']),
         error: err => console.error('Erreur update étudiant:', err)
       });
     } else if (typeForm === 'ENSEIGNANTCHERCHEUR') {
       this.MS.updateEnseignant(idCourant, dataEnseignant).subscribe({
-        next: () => this.router.navigate(['']),
+        next: () => this.router.navigate(['/membres']),
         error: err => console.error('Erreur update enseignant:', err)
       });
     }
@@ -167,9 +167,9 @@ sub() {
 
   // MODE AJOUT
   if (typeForm === 'ETUDIANT') {
-    this.MS.addEtudiant(dataEtudiant).subscribe(() => this.router.navigate(['']));
+    this.MS.addEtudiant(dataEtudiant).subscribe(() => this.router.navigate(['/membres']));
   } else if (typeForm === 'ENSEIGNANTCHERCHEUR') {
-    this.MS.addEnseignant(dataEnseignant).subscribe(() => this.router.navigate(['']));
+    this.MS.addEnseignant(dataEnseignant).subscribe(() => this.router.navigate(['/membres']));
   }
 }
 }
