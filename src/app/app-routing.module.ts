@@ -9,6 +9,7 @@ import { OutilComponent } from './outil/outil.component';
 import { OutilFormComponent } from './outil-form/outil-form.component';
 import { PublicationFormComponent } from './publication-form/publication-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
    //l'ordre des routes est important
@@ -16,6 +17,8 @@ const routes: Routes = [
     path:'',
     component: DashboardComponent
   },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
   {
     path: 'membre',
     component: MembreComponent
@@ -71,7 +74,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'login'
   }
 ];
 @NgModule({
