@@ -7,10 +7,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./outil-form.component.css']
 })
 export class OutilFormComponent implements OnInit {
-  outilForm!: FormGroup;
-  photoPreview: string | null = null;
 
-  constructor(private fb: FormBuilder) {}
+  outilForm!: FormGroup;
+  sources: string[] = ['interne', 'externe', 'automatique']; // liste déroulante
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -18,53 +19,30 @@ export class OutilFormComponent implements OnInit {
 
   initializeForm(): void {
     this.outilForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.minLength(10)]],
-      type: ['', Validators.required],
-      category: ['', Validators.required],
-      photo: [null]
+      date: ['', Validators.required],
+      source: ['', Validators.required]
     });
-  }
-
-  onPhotoSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.photoPreview = e.target?.result as string;
-      };
-      reader.readAsDataURL(file);
-      this.outilForm.patchValue({ photo: file });
-    }
   }
 
   onSubmit(): void {
     if (this.outilForm.valid) {
       console.log('Form Value:', this.outilForm.value);
-      // TODO: Send data to service
+      // TODO : appeler le service pour enregistrer l'outil
       this.resetForm();
     }
   }
 
   resetForm(): void {
     this.outilForm.reset();
-    this.photoPreview = null;
   }
 
-  get name() {
-    return this.outilForm.get('name');
+  // Getters pour template
+  get date() {
+    return this.outilForm.get('date');
   }
 
-  get description() {
-    return this.outilForm.get('description');
+  get source() {
+    return this.outilForm.get('source');
   }
 
-  get type() {
-    return this.outilForm.get('type');
-  }
-
-  get category() {
-    return this.outilForm.get('category');
-  }
 }

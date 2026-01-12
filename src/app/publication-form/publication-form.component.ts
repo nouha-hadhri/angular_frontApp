@@ -7,29 +7,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./publication-form.component.css']
 })
 export class PublicationFormComponent implements OnInit {
+
   publicationForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.initializeForm();
-  }
-
-  initializeForm(): void {
     this.publicationForm = this.fb.group({
+      id: ['', Validators.required],
+      type: ['', Validators.required],
       titre: ['', [Validators.required, Validators.minLength(3)]],
-      contenu: ['', [Validators.required, Validators.minLength(10)]],
-      auteur: ['', [Validators.required, Validators.minLength(3)]],
-      categorie: ['', Validators.required],
-      tags: ['', Validators.required],
-      datePublication: ['', Validators.required]
+      lien: ['', [Validators.required, Validators.minLength(3)]],
+      createdAt: ['', Validators.required],
+      updatedAt: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
     if (this.publicationForm.valid) {
       console.log('Form Value:', this.publicationForm.value);
-      // TODO: Send data to service
+      // TODO : envoyer les données au service backend
       this.resetForm();
     }
   }
@@ -38,27 +35,12 @@ export class PublicationFormComponent implements OnInit {
     this.publicationForm.reset();
   }
 
-  get titre() {
-    return this.publicationForm.get('titre');
-  }
+  // Getters pour le template
+  get id() { return this.publicationForm.get('id'); }
+  get type() { return this.publicationForm.get('type'); }
+  get titre() { return this.publicationForm.get('titre'); }
+  get lien() { return this.publicationForm.get('lien'); }
+  get createdAt() { return this.publicationForm.get('createdAt'); }
+  get updatedAt() { return this.publicationForm.get('updatedAt'); }
 
-  get contenu() {
-    return this.publicationForm.get('contenu');
-  }
-
-  get auteur() {
-    return this.publicationForm.get('auteur');
-  }
-
-  get categorie() {
-    return this.publicationForm.get('categorie');
-  }
-
-  get tags() {
-    return this.publicationForm.get('tags');
-  }
-
-  get datePublication() {
-    return this.publicationForm.get('datePublication');
-  }
 }

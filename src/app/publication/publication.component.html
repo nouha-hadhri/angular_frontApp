@@ -1,57 +1,65 @@
 <div class="table-container">
+
   <!-- Bouton d’ajout aligné à droite -->
   <div class="table-header right">
     <button routerLink="/createPublication" mat-raised-button color="primary">
       <mat-icon>add</mat-icon>
-      Create New
+      Ajouter une Publication
     </button>
   </div>
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    class="mat-elevation-z8 full-width-table"
-  >
-    <!-- ID Column -->
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
+
+    <!-- ID -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
+
+    <!-- Type -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Type</th>
       <td mat-cell *matCellDef="let element">{{ element.type }}</td>
     </ng-container>
+
+    <!-- Titre -->
     <ng-container matColumnDef="titre">
       <th mat-header-cell *matHeaderCellDef>Titre</th>
       <td mat-cell *matCellDef="let element">{{ element.titre }}</td>
     </ng-container>
+
+    <!-- Lien -->
     <ng-container matColumnDef="lien">
       <th mat-header-cell *matHeaderCellDef>Lien</th>
       <td mat-cell *matCellDef="let element">{{ element.lien }}</td>
     </ng-container>
+
+    <!-- CreatedAt -->
     <ng-container matColumnDef="createdAt">
       <th mat-header-cell *matHeaderCellDef>Created At</th>
       <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
     </ng-container>
+
+    <!-- UpdatedAt -->
     <ng-container matColumnDef="updatedAt">
       <th mat-header-cell *matHeaderCellDef>Updated At</th>
       <td mat-cell *matCellDef="let element">{{ element.updatedAt }}</td>
     </ng-container>
 
-    <!-- action Column -->
+    <!-- Actions -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <button routerLink="editPublication/{{ element.id }}">
+        <button mat-icon-button routerLink="/editPublication/{{ element.id }}">
           <mat-icon color="primary">edit</mat-icon>
         </button>
-        <button (click)="deletePublication(element.id)">
+        <button mat-icon-button (click)="deletePublication(element.id)">
           <mat-icon color="warn">delete</mat-icon>
         </button>
       </td>
     </ng-container>
 
-    <!-- Header & Row definitions -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
