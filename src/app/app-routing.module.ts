@@ -2,11 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MembreComponent } from './membre/membre.component';
 import { MembreFormComponent } from './membre-form/membre-form.component';
+import { PublicationComponent } from './publication/publication.component';
+import { EvenementComponent } from './evenement/evenement.component';
+import { EvenementFormComponent } from './evenement-form/evenement-form.component';
+import { OutilComponent } from './outil/outil.component';
+import { OutilFormComponent } from './outil-form/outil-form.component';
+import { PublicationFormComponent } from './publication-form/publication-form.component';
 
 const routes: Routes = [
    //l'ordre des routes est important
   {
     path:'',
+    component: MembreComponent
+  },
+  {
+    path: 'membre',
     component: MembreComponent
   },
   {
@@ -18,9 +28,50 @@ const routes: Routes = [
     component: MembreFormComponent
   },
   {
-    path:'**',
-    component: MembreComponent
+    path: 'outil',
+    component: OutilComponent
   },
+  {
+    path:'createOutil',
+    component: OutilFormComponent
+  },
+  {
+    path:':editOutil/:id',
+    component: OutilFormComponent
+  },
+  {
+    path: 'evenement',
+    component: EvenementComponent
+  },
+  {
+    path:'createEvenement',
+    component: EvenementFormComponent
+  },
+  {
+    path:':editEvenement/:id',
+    component: EvenementFormComponent
+  },
+  {
+    path: 'publication',
+    component: PublicationComponent
+  },
+  {
+    path:'createPublication',
+    component: PublicationFormComponent
+  },
+  {
+    path:':editPublication/:id',
+    component: PublicationFormComponent
+  },
+  {
+    path: '',
+    redirectTo: 'membre',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'membre'
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,84 @@
+<div class="outil-form">
+  <h2 class="form-title">Ajouter un Outil</h2>
+
+  <form [formGroup]="outilForm" (ngSubmit)="onSubmit()">
+    <!-- Nom -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nom de l'outil</mat-label>
+      <input matInput formControlName="name" placeholder="Ex: Perceuse" />
+      <mat-error *ngIf="name?.hasError('required')"
+        >Le nom est requis</mat-error
+      >
+      <mat-error *ngIf="name?.hasError('minlength')"
+        >Minimum 3 caractères</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        rows="4"
+        placeholder="Décrivez l'outil..."
+      ></textarea>
+      <mat-error *ngIf="description?.hasError('required')"
+        >La description est requise</mat-error
+      >
+      <mat-error *ngIf="description?.hasError('minlength')"
+        >Minimum 10 caractères</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Type -->
+    <div class="type-container">
+      <label class="type-title">Type</label>
+      <mat-radio-group formControlName="type">
+        <mat-radio-button value="electrique">Électrique</mat-radio-button>
+        <mat-radio-button value="manuel">Manuel</mat-radio-button>
+        <mat-radio-button value="autre">Autre</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="type?.hasError('required')"
+        >Sélectionnez un type</mat-error
+      >
+    </div>
+
+    <!-- Catégorie -->
+    <mat-form-field appearance="outline">
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="construction">Construction</mat-option>
+        <mat-option value="jardinage">Jardinage</mat-option>
+        <mat-option value="menuiserie">Menuiserie</mat-option>
+        <mat-option value="plomberie">Plomberie</mat-option>
+      </mat-select>
+      <mat-error *ngIf="category?.hasError('required')"
+        >Sélectionnez une catégorie</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Photo Upload -->
+    <div class="photo-upload">
+      <label class="photo-label">Photo</label>
+      <input type="file" accept="image/*" (change)="onPhotoSelected($event)" />
+      <img
+        *ngIf="photoPreview"
+        [src]="photoPreview"
+        alt="Aperçu"
+        class="photo-preview"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit-btn"
+      type="submit"
+      [disabled]="outilForm.invalid"
+    >
+      Ajouter l'outil
+    </button>
+  </form>
+</div>

@@ -1,0 +1,81 @@
+<div class="dashboard-container">
+  <h1>Tableau de Bord</h1>
+
+  <!-- Statistiques -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon members">👥</div>
+      <div class="stat-content">
+        <p class="stat-label">Membres</p>
+        <p class="stat-value">{{ nbMembers }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon publications">📄</div>
+      <div class="stat-content">
+        <p class="stat-label">Publications</p>
+        <p class="stat-value">{{ nbPublications }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon tools">🛠️</div>
+      <div class="stat-content">
+        <p class="stat-label">Outils</p>
+        <p class="stat-value">{{ nbTools }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon events">📅</div>
+      <div class="stat-content">
+        <p class="stat-label">Événements</p>
+        <p class="stat-value">{{ nbEvents }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+    <div class="chart-container">
+      <h3>Statut des Membres</h3>
+      <canvas
+        *ngIf="membersChartConfig"
+        baseChart
+        [type]="membersChartConfig.type"
+        [data]="membersChartConfig.data"
+      ></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h3>Publications par Mois</h3>
+      <canvas
+        *ngIf="publicationsChartConfig"
+        baseChart
+        [type]="publicationsChartConfig.type"
+        [data]="publicationsChartConfig.data"
+      ></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h3>Événements par Mois</h3>
+      <canvas
+        *ngIf="eventsChartConfig"
+        baseChart
+        [type]="eventsChartConfig.type"
+        [data]="eventsChartConfig.data"
+      ></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h3>État des Outils</h3>
+      <canvas
+        *ngIf="toolsChartConfig"
+        baseChart
+        [type]="toolsChartConfig.type"
+        [data]="toolsChartConfig.data"
+      ></canvas>
+    </div>
+  </div>
+</div>

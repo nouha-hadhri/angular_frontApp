@@ -1,0 +1,98 @@
+<div class="publication-form">
+  <h2 class="form-title">Ajouter une Publication</h2>
+
+  <form [formGroup]="publicationForm" (ngSubmit)="onSubmit()">
+    <!-- Titre -->
+    <mat-form-field appearance="outline">
+      <mat-label>Titre de la publication</mat-label>
+      <input
+        matInput
+        formControlName="titre"
+        placeholder="Ex: Nouvelle initiative"
+      />
+      <mat-error *ngIf="titre?.hasError('required')"
+        >Le titre est requis</mat-error
+      >
+      <mat-error *ngIf="titre?.hasError('minlength')"
+        >Minimum 3 caractères</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Contenu -->
+    <mat-form-field appearance="outline">
+      <mat-label>Contenu</mat-label>
+      <textarea
+        matInput
+        formControlName="contenu"
+        rows="5"
+        placeholder="Écrivez le contenu de la publication..."
+      ></textarea>
+      <mat-error *ngIf="contenu?.hasError('required')"
+        >Le contenu est requis</mat-error
+      >
+      <mat-error *ngIf="contenu?.hasError('minlength')"
+        >Minimum 10 caractères</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Auteur -->
+    <mat-form-field appearance="outline">
+      <mat-label>Auteur</mat-label>
+      <input matInput formControlName="auteur" placeholder="Votre nom" />
+      <mat-error *ngIf="auteur?.hasError('required')"
+        >L'auteur est requis</mat-error
+      >
+      <mat-error *ngIf="auteur?.hasError('minlength')"
+        >Minimum 3 caractères</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Catégorie -->
+    <mat-form-field appearance="outline">
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="categorie">
+        <mat-option value="actualite">Actualité</mat-option>
+        <mat-option value="tutoriel">Tutoriel</mat-option>
+        <mat-option value="annonce">Annonce</mat-option>
+        <mat-option value="opinion">Opinion</mat-option>
+        <mat-option value="autre">Autre</mat-option>
+      </mat-select>
+      <mat-error *ngIf="categorie?.hasError('required')"
+        >Sélectionnez une catégorie</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Tags -->
+    <mat-form-field appearance="outline">
+      <mat-label>Tags (séparés par des virgules)</mat-label>
+      <input
+        matInput
+        formControlName="tags"
+        placeholder="Ex: important, urgent"
+      />
+      <mat-error *ngIf="tags?.hasError('required')"
+        >Au moins un tag est requis</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Date de Publication -->
+    <mat-form-field appearance="outline">
+      <mat-label>Date de publication</mat-label>
+      <input matInput type="datetime-local" formControlName="datePublication" />
+      <mat-error *ngIf="datePublication?.hasError('required')"
+        >La date est requise</mat-error
+      >
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      class="submit-btn"
+      type="submit"
+      [disabled]="publicationForm.invalid"
+    >
+      Publier
+    </button>
+  </form>
+</div>

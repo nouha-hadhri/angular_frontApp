@@ -1,0 +1,122 @@
+/* Container principal */
+.outil-form {
+    max-width: 480px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 28px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Titre */
+.form-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Champs */
+mat-form-field {
+    width: 100%;
+}
+
+/* Type (radio buttons) */
+.type-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.type-title {
+    font-weight: 500;
+    color: #555;
+}
+
+mat-radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* important pour mobile */
+}
+
+/* Bouton */
+.submit-btn {
+    margin-top: 15px;
+    height: 45px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.photo-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.photo-label {
+    font-weight: 500;
+    color: #555;
+}
+
+.photo-upload input[type="file"] {
+    border: 1px dashed #bbb;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.photo-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    align-self: center;
+}
+
+/* ========================= */
+/* 📱 Mobile (≤ 600px) */
+/* ========================= */
+@media (max-width: 600px) {
+    .outil-form {
+        margin: 20px 12px;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+
+    mat-radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+/* ========================= */
+/* 📱 Tablette (601px – 900px) */
+/* ========================= */
+@media (min-width: 601px) and (max-width: 900px) {
+    .outil-form {
+        max-width: 600px;
+        padding: 26px;
+    }
+}
+
+/* ========================= */
+/* 💻 Desktop large (≥ 1200px) */
+/* ========================= */
+@media (min-width: 1200px) {
+    .outil-form {
+        max-width: 520px;
+    }
+}

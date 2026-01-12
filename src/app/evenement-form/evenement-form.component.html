@@ -1,0 +1,62 @@
+<div class="evenement-form">
+  <h2 class="form-title">Ajouter un Événement</h2>
+
+  <form [formGroup]="evenementForm" (ngSubmit)="onSubmit()">
+    <!-- Titre -->
+    <mat-form-field appearance="outline">
+      <mat-label>Titre de l'événement</mat-label>
+      <input matInput formControlName="titre" placeholder="Ex: Réunion mensuelle">
+      <mat-error *ngIf="titre?.hasError('required')">Le titre est requis</mat-error>
+      <mat-error *ngIf="titre?.hasError('minlength')">Minimum 3 caractères</mat-error>
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="4" placeholder="Décrivez l'événement..."></textarea>
+      <mat-error *ngIf="description?.hasError('required')">La description est requise</mat-error>
+      <mat-error *ngIf="description?.hasError('minlength')">Minimum 10 caractères</mat-error>
+    </mat-form-field>
+
+    <!-- Date -->
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput type="datetime-local" formControlName="date">
+      <mat-error *ngIf="date?.hasError('required')">La date est requise</mat-error>
+    </mat-form-field>
+
+    <!-- Lieu -->
+    <mat-form-field appearance="outline">
+      <mat-label>Lieu</mat-label>
+      <input matInput formControlName="lieu" placeholder="Ex: Salle A">
+      <mat-error *ngIf="lieu?.hasError('required')">Le lieu est requis</mat-error>
+      <mat-error *ngIf="lieu?.hasError('minlength')">Minimum 3 caractères</mat-error>
+    </mat-form-field>
+
+    <!-- Catégorie -->
+    <mat-form-field appearance="outline">
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="categorie">
+        <mat-option value="reunion">Réunion</mat-option>
+        <mat-option value="formation">Formation</mat-option>
+        <mat-option value="conference">Conférence</mat-option>
+        <mat-option value="atelier">Atelier</mat-option>
+        <mat-option value="social">Social</mat-option>
+      </mat-select>
+      <mat-error *ngIf="categorie?.hasError('required')">Sélectionnez une catégorie</mat-error>
+    </mat-form-field>
+
+    <!-- Nombre de Participants -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre de participants attendus</mat-label>
+      <input matInput type="number" formControlName="nombreParticipants" placeholder="Ex: 20">
+      <mat-error *ngIf="nombreParticipants?.hasError('required')">Le nombre de participants est requis</mat-error>
+      <mat-error *ngIf="nombreParticipants?.hasError('min')">Minimum 1 participant</mat-error>
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="evenementForm.invalid">
+      Ajouter l'événement
+    </button>
+  </form>
+</div>
