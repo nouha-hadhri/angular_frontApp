@@ -1,0 +1,46 @@
+
+<div class="table-container">
+  <!-- Bouton d’ajout aligné à droite -->
+  <div class="table-header right">
+    <button routerLink="/createOutil" mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>
+      Create New
+    </button>
+  </div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+  </ng-container>  
+   <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{ element.date }} </td>
+  </ng-container>
+  <ng-container matColumnDef="source">
+    <th mat-header-cell *matHeaderCellDef> Source </th>
+    <td mat-cell *matCellDef="let element"> {{ element.source }} </td>
+  </ng-container>
+
+  
+  
+  <!-- action Column -->
+ <ng-container matColumnDef="actions">
+  <th mat-header-cell *matHeaderCellDef> Actions </th>
+  <td mat-cell *matCellDef="let element">
+   <button routerLink="editOutil/{{element.id}}"><mat-icon color="primary">edit</mat-icon></button>
+      <button (click)="deleteOutil(element.id)">
+        <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </td>
+</ng-container>
+
+  <!-- Header & Row definitions -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
+
+

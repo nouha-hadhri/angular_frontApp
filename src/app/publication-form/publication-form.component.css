@@ -1,0 +1,71 @@
+/* Container principal */
+.publication-form {
+    max-width: 480px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 28px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Titre */
+.form-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Champs */
+mat-form-field {
+    width: 100%;
+}
+
+/* Bouton */
+.submit-btn {
+    margin-top: 15px;
+    height: 45px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+/* ========================= */
+/* 📱 Mobile (≤ 600px) */
+/* ========================= */
+@media (max-width: 600px) {
+    .publication-form {
+        margin: 20px 12px;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+/* ========================= */
+/* 📱 Tablette (601px – 900px) */
+/* ========================= */
+@media (min-width: 601px) and (max-width: 900px) {
+    .publication-form {
+        max-width: 600px;
+        padding: 26px;
+    }
+}
+
+/* ========================= */
+/* 💻 Desktop large (≥ 1200px) */
+/* ========================= */
+@media (min-width: 1200px) {
+    .publication-form {
+        max-width: 520px;
+    }
+}
