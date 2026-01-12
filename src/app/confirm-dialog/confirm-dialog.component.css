@@ -1,0 +1,65 @@
+/* ===== Compact Purple & White Dialog ===== */
+.mat-mdc-dialog-container {
+  width: 320px; /* boîte plus petite */
+  max-width: 90%;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(103, 58, 183, 0.3);
+}
+
+/* Title */
+.mat-mdc-dialog-title {
+  color: #673ab7; /* Deep Purple */
+  font-size: 18px; /* plus petit */
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Content */
+.mat-mdc-dialog-content {
+  color: #424242;
+  font-size: 14px; /* plus petit */
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* Actions container - boutons alignés en bas */
+.mat-mdc-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0; /* séparation subtile */
+}
+
+/* Cancel button */
+.mat-mdc-dialog-actions button:first-child {
+  color: #673ab7;
+  font-weight: 500;
+  border: 1px solid #673ab7;
+  border-radius: 8px;
+  background-color: white;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+}
+
+.mat-mdc-dialog-actions button:first-child:hover {
+  background-color: #f3e5f5; /* léger violet clair */
+}
+
+/* Delete button */
+.mat-mdc-dialog-actions button:last-child {
+  background-color: #673ab7;
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+}
+
+.mat-mdc-dialog-actions button:last-child:hover {
+  background-color: #5e35b1;
+  box-shadow: 0 2px 6px rgba(103, 58, 183, 0.3);
+}

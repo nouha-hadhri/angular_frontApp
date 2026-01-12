@@ -1,0 +1,83 @@
+
+<div class="table-container">
+  <!-- Bouton d’ajout aligné à droite -->
+  <div class="table-header right">
+    <button routerLink="/createMembre" mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>
+      Create New
+    </button>
+  </div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+  </ng-container>
+
+  <!-- CIN Column -->
+  <ng-container matColumnDef="cin">
+    <th mat-header-cell *matHeaderCellDef> CIN </th>
+    <td mat-cell *matCellDef="let element"> {{ element.cin }} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> Nom </th>
+    <td mat-cell *matCellDef="let element"> {{ element.nom }} </td>
+  </ng-container>
+  <!-- First Name Column -->
+  <ng-container matColumnDef="prenom">
+    <th mat-header-cell *matHeaderCellDef> Prénom </th>
+    <td mat-cell *matCellDef="let element"> {{ element.prenom }} </td>
+  </ng-container>
+<!-- Birth Date Column -->
+   <ng-container matColumnDef="dateNaissance">
+    <th mat-header-cell *matHeaderCellDef> Date de Naissance </th>
+    <td mat-cell *matCellDef="let element"> {{ element.dateNaissance }} </td>
+  </ng-container>
+  <!-- Photo Column -->
+  <ng-container matColumnDef="photo">
+    <th mat-header-cell *matHeaderCellDef> Photo </th>
+    <td mat-cell *matCellDef="let element">
+      <img [src]="element.photo" alt="Photo de {{ element.nom }}" width="50" height="50">
+    </td>
+  </ng-container>
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+  </ng-container>
+
+  <!-- CV Column -->
+  <ng-container matColumnDef="cv">
+    <th mat-header-cell *matHeaderCellDef> CV </th>
+    <td mat-cell *matCellDef="let element">
+      <a [href]="element.cv" target="_blank">Voir le CV</a>
+    </td>
+  </ng-container>
+
+  <!-- Type Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let element"> {{ element.type }} </td>
+  </ng-container>
+  
+  <!-- action Column -->
+ <ng-container matColumnDef="actions">
+  <th mat-header-cell *matHeaderCellDef> Actions </th>
+  <td mat-cell *matCellDef="let element">
+   <button routerLink="editMembre/{{element.id}}"><mat-icon color="primary">edit</mat-icon></button>
+      <button (click)="deleteMember(element.id)">
+        <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </td>
+</ng-container>
+
+  <!-- Header & Row definitions -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
+
