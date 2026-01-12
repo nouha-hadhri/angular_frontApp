@@ -8,12 +8,13 @@ import { EvenementFormComponent } from './evenement-form/evenement-form.componen
 import { OutilComponent } from './outil/outil.component';
 import { OutilFormComponent } from './outil-form/outil-form.component';
 import { PublicationFormComponent } from './publication-form/publication-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
    //l'ordre des routes est important
   {
     path:'',
-    component: MembreComponent
+    component: DashboardComponent
   },
   {
     path: 'membre',
@@ -65,12 +66,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'membre',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'membre'
+    redirectTo: 'dashboard'
   }
 ];
 @NgModule({
