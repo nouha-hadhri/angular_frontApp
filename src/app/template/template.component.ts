@@ -8,11 +8,4 @@ import { LoginService } from '../services/login.service';
 })
 export class TemplateComponent {
 
-  constructor(public loginService: LoginService) {}
-
-  // Méthode qui appelle le service
-  logout(): void {
-    this.loginService.logout();
-  }
-
 }

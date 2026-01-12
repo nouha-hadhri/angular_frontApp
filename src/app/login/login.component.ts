@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,35 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  email:string="";
+  password:string="";
+  //injection de dependance
+  constructor(private LS:LoginService, private router:Router) {}
 
-  loginForm: FormGroup;
-  hidePassword = true;
-  loginError = '';
+ 
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-
-  onSubmit(): void {
-  if(this.loginForm.valid) {
-    const { email, password } = this.loginForm.value;
-
-    this.loginService.login(email, password).subscribe(success => {
-      if(success) {
-        // redirection manuelle si besoin
-        this.router.navigate(['/dashboard']);
-      } else {
-        alert('Email ou mot de passe incorrect');
-      }
-    });
-  }
-}
-
-
-  get email() { return this.loginForm.get('email'); }
-  get password() { return this.loginForm.get('password'); }
-
+  login(){
+    //appeler le service
+    this.LS.signInWithEmailAndPassword(this.email, this.password).then(()=>{
+      this.router.navigate(['/dashboard'])
+  })}
+  
 }

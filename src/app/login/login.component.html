@@ -1,31 +1,16 @@
-<div class="login-container">
-  <h2 class="login-title">Connexion</h2>
-
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-    <!-- Email -->
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" placeholder="Ex: user@example.com">
-      <mat-error *ngIf="email?.hasError('required')">L'email est requis</mat-error>
-      <mat-error *ngIf="email?.hasError('email')">Email invalide</mat-error>
-    </mat-form-field>
-
-    <!-- Password -->
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Mot de passe</mat-label>
-      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Mot de passe">
-      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
-        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-      </button>
-      <mat-error *ngIf="password?.hasError('required')">Le mot de passe est requis</mat-error>
-      <mat-error *ngIf="password?.hasError('minlength')">Minimum 6 caractères</mat-error>
-    </mat-form-field>
-
-    <!-- Submit -->
-    <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="loginForm.invalid">
-      Se connecter
-    </button>
-
-  </form>
-</div>
+<form (ngSubmit)="login()">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" name="email" 
+    [(ngModel)]="email" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password" name="password"
+     [(ngModel)]="password" required />
+  </mat-form-field>
+  <button mat-raised-button color="primary" 
+  type="submit" >
+    Connecter
+  </button>
+</form>

@@ -68,9 +68,8 @@ const routes: Routes = [
     component: PublicationFormComponent
   },
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
+    path:'', //par defaut
+    component:LoginComponent
   },
   {
     path: '**',

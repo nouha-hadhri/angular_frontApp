@@ -35,6 +35,11 @@ import { OutilFormComponent } from './outil-form/outil-form.component';
 import { EvenementFormComponent } from './evenement-form/evenement-form.component';
 import { PublicationFormComponent } from './publication-form/publication-form.component';
 import { LoginComponent } from './login/login.component';
+import { firebaseConfig } from 'environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+
 
 
 
@@ -79,6 +84,8 @@ import { LoginComponent } from './login/login.component';
     MatRadioModule,
     MatSelectModule,
     NgChartsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
