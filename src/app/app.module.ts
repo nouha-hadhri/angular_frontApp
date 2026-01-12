@@ -24,12 +24,18 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 import { MembreFormComponent } from './membre-form/membre-form.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { OutilComponent } from './outil/outil.component';
+import { EvenementComponent } from './evenement/evenement.component';
+import { PublicationComponent } from './publication/publication.component';
 @NgModule({
   declarations: [
     AppComponent,
     MembreComponent,
     ConfirmDialogComponent,
     MembreFormComponent,
+    OutilComponent,
+    EvenementComponent,
+    PublicationComponent,
   ],
   imports: [
     BrowserModule,
