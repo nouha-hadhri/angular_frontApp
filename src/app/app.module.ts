@@ -25,12 +25,30 @@ import {MatCardModule} from '@angular/material/card';
 import { MembreFormComponent } from './membre-form/membre-form.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { OutilComponent } from './outil/outil.component';
+import { EvenementComponent } from './evenement/evenement.component';
+import { PublicationComponent } from './publication/publication.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgChartsModule } from 'ng2-charts';
+import { TemplateComponent } from './template/template.component';
+import { OutilFormComponent } from './outil-form/outil-form.component';
+import { EvenementFormComponent } from './evenement-form/evenement-form.component';
+import { PublicationFormComponent } from './publication-form/publication-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     MembreComponent,
     ConfirmDialogComponent,
     MembreFormComponent,
+    OutilComponent,
+    EvenementComponent,
+    PublicationComponent,
+    DashboardComponent,
+    TemplateComponent,
+    OutilFormComponent,
+    EvenementFormComponent,
+    PublicationFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,14 +73,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatNativeDateModule,
     MatCardModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    NgChartsModule,
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-
-
