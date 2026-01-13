@@ -1,0 +1,13 @@
+<h2>Affecter {{data.type}}</h2>
+
+<mat-selection-list>
+  <mat-list-option
+    *ngFor="let i of items"
+    (click)="toggle(i.id)">
+    {{ i.titre || i.source || i.lieu }}
+  </mat-list-option>
+</mat-selection-list>
+
+<button mat-raised-button color="primary" (click)="valider()">
+  Valider
+</button>

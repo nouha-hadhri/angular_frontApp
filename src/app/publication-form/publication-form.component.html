@@ -1,56 +1,45 @@
-<div class="publication-form">
-  <h2 class="form-title">Ajouter / Éditer une Publication</h2>
+<form [formGroup]="form" (ngSubmit)="sub()" class="publication-form">
 
-  <form [formGroup]="publicationForm" (ngSubmit)="onSubmit()">
+  <h2 class="form-title">
+    {{ isEditMode ? 'Modifier la publication' : 'Ajouter une publication' }}
+  </h2>
 
-    <!-- ID -->
-    <mat-form-field appearance="outline">
-      <mat-label>ID</mat-label>
-      <input matInput formControlName="id" placeholder="Ex: 12345" />
-      <mat-error *ngIf="id?.hasError('required')">L'ID est requis</mat-error>
-    </mat-form-field>
+  <div class="form-grid">
 
-    <!-- Type -->
     <mat-form-field appearance="outline">
       <mat-label>Type</mat-label>
-      <input matInput formControlName="type" placeholder="Ex: Article, Blog" />
-      <mat-error *ngIf="type?.hasError('required')">Le type est requis</mat-error>
+      <mat-select formControlName="type">
+        <mat-option value="ARTICLE">Article</mat-option>
+        <mat-option value="REVUE">Revue</mat-option>
+        <mat-option value="CONFERENCE">Conférence</mat-option>
+      </mat-select>
     </mat-form-field>
 
-    <!-- Titre -->
     <mat-form-field appearance="outline">
       <mat-label>Titre</mat-label>
-      <input matInput formControlName="titre" placeholder="Ex: Nouvelle publication" />
-      <mat-error *ngIf="titre?.hasError('required')">Le titre est requis</mat-error>
-      <mat-error *ngIf="titre?.hasError('minlength')">Minimum 3 caractères</mat-error>
+      <input matInput formControlName="titre">
     </mat-form-field>
 
-    <!-- Lien -->
     <mat-form-field appearance="outline">
       <mat-label>Lien</mat-label>
-      <input matInput formControlName="lien" placeholder="Ex: https://..." />
-      <mat-error *ngIf="lien?.hasError('required')">Le lien est requis</mat-error>
-      <mat-error *ngIf="lien?.hasError('minlength')">Minimum 3 caractères</mat-error>
+      <input matInput formControlName="lien">
     </mat-form-field>
 
-    <!-- CreatedAt -->
     <mat-form-field appearance="outline">
-      <mat-label>Date de création</mat-label>
-      <input matInput type="datetime-local" formControlName="createdAt" />
-      <mat-error *ngIf="createdAt?.hasError('required')">La date de création est requise</mat-error>
+      <mat-label>Source PDF</mat-label>
+      <input matInput formControlName="sourcePDF">
+    </mat-form-field>
+     <mat-form-field appearance="outline">
+      <mat-label>Date de publication</mat-label>
+      <input matInput type="date" formControlName="datePublication">
     </mat-form-field>
 
-    <!-- UpdatedAt -->
-    <mat-form-field appearance="outline">
-      <mat-label>Date de mise à jour</mat-label>
-      <input matInput type="datetime-local" formControlName="updatedAt" />
-      <mat-error *ngIf="updatedAt?.hasError('required')">La date de mise à jour est requise</mat-error>
-    </mat-form-field>
+    
 
-    <!-- Submit -->
-    <button mat-raised-button color="primary" type="submit" [disabled]="publicationForm.invalid">
-      Enregistrer
-    </button>
+  </div>
 
-  </form>
-</div>
+  <button mat-raised-button color="primary">
+    {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+  </button>
+
+</form>

@@ -1,8 +1,11 @@
 export interface Publication { //ki testaamel interface ma testha9ech taamel constuctor
-    id:string;
+    id:number;
     type: string;
     titre: string;
     lien: string;
-    createdAt: string;
-    upadatedAt: string;
+    sourcePDF: string;
+    date: Date;
+    createdAt: Date;
+    updatedAt: Date;
+    
 }

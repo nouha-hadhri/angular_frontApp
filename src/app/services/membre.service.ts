@@ -43,4 +43,28 @@ updateEnseignant(id: number, data: any): Observable<any> {
 getEncadrants(): Observable<any[]> {
     return this.httpClient.get<any[]>(`http://localhost:9000/MEMBRE-SERVICE/membres/enseignants`);
   }
+  // 🔗 Affecter un événement à un membre
+affecterEvenement(idMembre: number, idEvent: number): Observable<void> {
+  return this.httpClient.post<void>(
+    `http://localhost:9000/MEMBRE-SERVICE/membres/${idMembre}/evenements/${idEvent}`,
+    {}
+  );
+}
+// 🔗 Affecter un outil à un membre
+affecterOutil(idMembre: number, idOutil: number): Observable<void> {
+  return this.httpClient.post<void>(
+    `http://localhost:9000/MEMBRE-SERVICE/membres/${idMembre}/outils/${idOutil}`,
+    {}
+  );
+}
+// 🔗 Affecter une publication à un membre
+affecterPublication(idMembre: number, idPub: number): Observable<void> {
+  return this.httpClient.post<void>(
+    `http://localhost:9000/MEMBRE-SERVICE/membres/${idMembre}/publications/${idPub}`,
+    {}
+  );
+}
+GetAllMembersWithDetails(): Observable<any[]> {
+  return this.httpClient.get<any[]>(`http://localhost:9000/MEMBRE-SERVICE/membres/details`); 
+}
 }

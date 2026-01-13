@@ -10,7 +10,7 @@ import { PublicationService } from '../services/publication.service';
 })
 export class PublicationComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'type', 'titre', 'lien', 'createdAt', 'updatedAt', 'actions'];
+  displayedColumns: string[] = ['id', 'type', 'titre','sourcePDF', 'lien', 'createdAt', 'updatedAt', 'actions'];
   dataSource: any[] = [];
 
   constructor(private PS: PublicationService, private dialog: MatDialog) {}

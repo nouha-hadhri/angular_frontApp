@@ -1,0 +1,66 @@
+/* Container général du dialog */
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px; /* largeur fixe, peut être ajustée */
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Titre du dialog */
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+/* Liste des items */
+mat-selection-list {
+  max-height: 250px; /* limite la hauteur avec scroll si beaucoup d’items */
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+  padding: 10px;
+}
+
+/* Chaque option de la liste */
+mat-list-option {
+  margin-bottom: 5px;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover sur les options */
+mat-list-option:hover {
+  background-color: #e3f2fd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Option sélectionnée */
+mat-list-option.mat-selected {
+  background-color: #1976d2;
+  color: white;
+}
+
+/* Bouton valider */
+button {
+  align-self: center; /* centre le bouton */
+  width: 120px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Hover sur le bouton */
+button:hover {
+  background-color: #115293; /* plus foncé pour effet hover */
+  transform: translateY(-1px);
+}

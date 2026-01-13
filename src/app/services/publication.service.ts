@@ -24,11 +24,13 @@ export class PublicationService {
   DeletePublication(id:string) : Observable<void>{
     return this.httpClient.delete<void>(`http://localhost:9000/PUBLICATION-SERVICE/publications/${id}`); //Alt GR 7 
   }
-  GetPublicationById(id:string) : Observable<Publication>{
+  GetPublicationById(id:number) : Observable<Publication>{
     return this.httpClient.get<Publication>(`http://localhost:9000/PUBLICATION-SERVICE/publications/${id}`);
   }
  updatePublication(id: number, data: any): Observable<any> {
   return this.httpClient.put(`http://localhost:9000/PUBLICATION-SERVICE/publications/${id}`, data);
 }
-
+getAuteurs(): Observable<any[]> {
+  return this.httpClient.get<any[]>('http://localhost:9000/MEMBRE-SERVICE/membres');
+}
 }

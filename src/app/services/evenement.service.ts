@@ -30,5 +30,4 @@ export class EvenementService {
  updateEvenement(id: number, data: any): Observable<any> {
   return this.httpClient.put(`http://localhost:9000/EVENEMENT-SERVICE/evenements/${id}`, data);
 }
-
 }

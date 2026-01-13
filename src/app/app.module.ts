@@ -34,6 +34,7 @@ import { TemplateComponent } from './template/template.component';
 import { OutilFormComponent } from './outil-form/outil-form.component';
 import { EvenementFormComponent } from './evenement-form/evenement-form.component';
 import { PublicationFormComponent } from './publication-form/publication-form.component';
+import { AffecterDialogComponent } from './affecter-dialog/affecter-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { PublicationFormComponent } from './publication-form/publication-form.co
     OutilFormComponent,
     EvenementFormComponent,
     PublicationFormComponent,
+    AffecterDialogComponent,
   ],
   imports: [
     BrowserModule,

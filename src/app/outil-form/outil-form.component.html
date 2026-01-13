@@ -1,34 +1,25 @@
-<div class="outil-form">
-  <h2 class="form-title">Ajouter un Outil</h2>
+<form [formGroup]="form" (ngSubmit)="sub()" class="outil-form">
 
-  <form [formGroup]="outilForm" (ngSubmit)="onSubmit()">
+  <h2 class="form-title">
+    {{ isEditMode ? 'Modifier l’outil' : 'Ajouter un outil' }}
+  </h2>
 
-    <!-- Date -->
+  <div class="form-grid">
+
     <mat-form-field appearance="outline">
       <mat-label>Date</mat-label>
-      <input matInput type="date" formControlName="date" />
-      <mat-error *ngIf="date?.hasError('required')">
-        La date est requise
-      </mat-error>
+      <input matInput type="date" formControlName="date">
     </mat-form-field>
 
-    <!-- Source -->
     <mat-form-field appearance="outline">
       <mat-label>Source</mat-label>
-      <mat-select formControlName="source">
-        <mat-option *ngFor="let s of sources" [value]="s">
-          {{ s | titlecase }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="source?.hasError('required')">
-        La source est requise
-      </mat-error>
+      <input matInput formControlName="source">
     </mat-form-field>
 
-    <!-- Submit -->
-    <button mat-raised-button color="primary" type="submit" [disabled]="outilForm.invalid">
-      Ajouter
-    </button>
+  </div>
 
-  </form>
-</div>
+  <button mat-raised-button color="primary">
+    {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+  </button>
+
+</form>

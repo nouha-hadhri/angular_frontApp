@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { MembreService } from '../services/membre.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { AffecterDialogComponent } from '../affecter-dialog/affecter-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-membre',
   templateUrl: './membre.component.html',
   styleUrls: ['./membre.component.css']
 })
 export class MembreComponent implements OnInit  {
-   displayedColumns: string[] = ['id', 'cin', 'nom','prenom','type', 'dateNaissance', 'photo', 'email','cv', 'actions'];
- 
+   displayedColumns: string[] = ['id', 'cin', 'nom','prenom','type', 'dateNaissance', 'photo', 'email','cv', 'actions','affectations'];
+
   constructor(private MS:MembreService,private dialog:MatDialog) { }
    dataSource:any[]= []
    deleteMember(id:string){
@@ -38,4 +40,17 @@ export class MembreComponent implements OnInit  {
     this.dataSource=data;
    })
   }
+  openAffectDialog(memberId: number, type: string) {
+  const dialogRef = this.dialog.open(AffecterDialogComponent, {
+    width: '500px',
+    data: { memberId, type }
+  });
+
+  dialogRef.afterClosed().subscribe(ok => {
+    if (ok) {
+      this.MS.GetAllMembersWithDetails().subscribe(data => this.dataSource = data);
+    }
+  });
+}
+
 }

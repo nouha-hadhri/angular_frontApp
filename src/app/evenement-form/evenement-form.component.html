@@ -1,42 +1,30 @@
-<div class="evenement-form">
-  <h2 class="form-title">Ajouter / Éditer un Événement</h2>
+<form [formGroup]="form" (ngSubmit)="sub()" class="evenement-form">
 
-  <form [formGroup]="evenementForm" (ngSubmit)="onSubmit()">
+  <h2 class="form-title">
+    {{ isEditMode ? 'Modifier l’événement' : 'Ajouter un événement' }}
+  </h2>
 
-    <!-- ID -->
-    <mat-form-field appearance="outline">
-      <mat-label>ID</mat-label>
-      <input matInput formControlName="id" placeholder="Ex: 123">
-      <mat-error *ngIf="id?.hasError('required')">L'ID est requis</mat-error>
-    </mat-form-field>
+  <div class="form-grid">
 
-    <!-- Titre -->
     <mat-form-field appearance="outline">
       <mat-label>Titre</mat-label>
-      <input matInput formControlName="titre" placeholder="Ex: Réunion mensuelle">
-      <mat-error *ngIf="titre?.hasError('required')">Le titre est requis</mat-error>
-      <mat-error *ngIf="titre?.hasError('minlength')">Minimum 3 caractères</mat-error>
+      <input matInput formControlName="titre">
     </mat-form-field>
 
-    <!-- Date -->
     <mat-form-field appearance="outline">
       <mat-label>Date</mat-label>
-      <input matInput type="datetime-local" formControlName="date">
-      <mat-error *ngIf="date?.hasError('required')">La date est requise</mat-error>
+      <input matInput type="date" formControlName="date">
     </mat-form-field>
 
-    <!-- Lieu -->
     <mat-form-field appearance="outline">
       <mat-label>Lieu</mat-label>
-      <input matInput formControlName="lieu" placeholder="Ex: Salle A">
-      <mat-error *ngIf="lieu?.hasError('required')">Le lieu est requis</mat-error>
-      <mat-error *ngIf="lieu?.hasError('minlength')">Minimum 3 caractères</mat-error>
+      <input matInput formControlName="lieu">
     </mat-form-field>
 
-    <!-- Submit -->
-    <button mat-raised-button color="primary" type="submit" [disabled]="evenementForm.invalid">
-      Enregistrer
-    </button>
+  </div>
 
-  </form>
-</div>
+  <button mat-raised-button color="primary">
+    {{ isEditMode ? 'Modifier' : 'Ajouter' }}
+  </button>
+
+</form>

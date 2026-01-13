@@ -1,42 +1,87 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EvenementService } from '../services/evenement.service';
 
 @Component({
   selector: 'app-evenement-form',
   templateUrl: './evenement-form.component.html',
   styleUrls: ['./evenement-form.component.css']
 })
-export class EvenementFormComponent implements OnInit {
+export class EvenementFormComponent {
 
-  evenementForm!: FormGroup;
+  form!: FormGroup;
+  isEditMode = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private ES: EvenementService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
-    this.evenementForm = this.fb.group({
-      id: ['', Validators.required],
-      titre: ['', [Validators.required, Validators.minLength(3)]],
-      date: ['', Validators.required],
-      lieu: ['', [Validators.required, Validators.minLength(3)]]
+  ngOnInit() {
+
+    // 🔹 Initialisation du formulaire
+    this.form = new FormGroup({
+      titre: new FormControl(null, Validators.required),
+      date: new FormControl(null, Validators.required),
+      lieu: new FormControl(null, Validators.required),
     });
-  }
 
-  onSubmit(): void {
-    if (this.evenementForm.valid) {
-      console.log('Form Value:', this.evenementForm.value);
-      // TODO : envoyer les données au service backend
-      this.resetForm();
+    // 🔹 Mode édition
+    const idCourant = this.activatedRoute.snapshot.params['id'];
+    if (idCourant) {
+      this.isEditMode = true;
+      this.ES.GetEvenementById(idCourant).subscribe(data => {
+        // patchValue pour remplir le formulaire
+        if (data.date) {
+          const d = new Date(data.date);
+          const formattedDate = `${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2,'0')}-${d.getDate().toString().padStart(2,'0')}`;
+          this.form.patchValue({
+            titre: data.titre,
+            date: formattedDate,
+            lieu: data.lieu
+          });
+        } else {
+          this.form.patchValue({
+            titre: data.titre,
+            date: null,
+            lieu: data.lieu
+          });
+        }
+      });
     }
   }
 
-  resetForm(): void {
-    this.evenementForm.reset();
+  // 🔹 soumission
+  sub() {
+    if (this.form.invalid) return;
+
+    const idCourant = this.activatedRoute.snapshot.params['id'];
+    const now = new Date();
+
+    // 🔹 Ajouter heure 00:00:00 pour correspondre à @JsonFormat
+    const dateInput = this.form.value.date ? new Date(this.form.value.date) : now;
+    const dateEvenement = `${dateInput.getFullYear()}-${(dateInput.getMonth()+1).toString().padStart(2,'0')}-${dateInput.getDate().toString().padStart(2,'0')} 00:00:00`;
+
+    const evenement: any = {
+      titre: this.form.value.titre,
+      date: dateEvenement,
+      lieu: this.form.value.lieu,
+    };
+
+    if (this.isEditMode) {
+      console.log('Updating événement:', idCourant, evenement);
+      this.ES.updateEvenement(idCourant, evenement).subscribe({
+        next: () => this.router.navigate(['/evenements']),
+        error: err => console.error('Erreur update événement:', err)
+      });
+      return;
+    }
+
+    console.log('Adding événement:', evenement);
+    this.ES.addEvenement(evenement).subscribe(() => {
+      this.router.navigate(['/evenements']);
+    });
   }
-
-  // Getters pour le template
-  get id() { return this.evenementForm.get('id'); }
-  get titre() { return this.evenementForm.get('titre'); }
-  get date() { return this.evenementForm.get('date'); }
-  get lieu() { return this.evenementForm.get('lieu'); }
-
 }
