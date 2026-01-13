@@ -40,6 +40,7 @@ import { LoginComponent } from './login/login.component';
 import { firebaseConfig } from '../../environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AffectationsComponent } from './affectations/affectations.component'; // added
 
 
 
@@ -60,6 +61,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
     AffecterDialogComponent,
     LoginComponent,
+    AffectationsComponent, // added
 
   ],
   imports: [

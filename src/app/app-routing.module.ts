@@ -10,12 +10,13 @@ import { OutilFormComponent } from './outil-form/outil-form.component';
 import { PublicationFormComponent } from './publication-form/publication-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { AffectationsComponent } from './affectations/affectations.component'; // added
 
 const routes: Routes = [
    //l'ordre des routes est important
   {
     path:'',
-    component: DashboardComponent
+    component: LoginComponent
   },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -66,6 +67,9 @@ const routes: Routes = [
   {
     path:'editPublication/:id',
     component: PublicationFormComponent
+  },
+  {
+    path: 'affectations', component: AffectationsComponent // new route
   },
   {
     path:'', //par defaut

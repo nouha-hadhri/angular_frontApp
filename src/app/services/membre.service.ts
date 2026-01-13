@@ -65,6 +65,6 @@ affecterPublication(idMembre: number, idPub: number): Observable<void> {
   );
 }
 GetAllMembersWithDetails(): Observable<any[]> {
-  return this.httpClient.get<any[]>(`http://localhost:9000/MEMBRE-SERVICE/membres/details`); 
+  return this.httpClient.get<any[]>(`http://localhost:9000/MEMBRE-SERVICE/affectations`); 
 }
 }
