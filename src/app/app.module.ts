@@ -34,7 +34,14 @@ import { TemplateComponent } from './template/template.component';
 import { OutilFormComponent } from './outil-form/outil-form.component';
 import { EvenementFormComponent } from './evenement-form/evenement-form.component';
 import { PublicationFormComponent } from './publication-form/publication-form.component';
+
 import { AffecterDialogComponent } from './affecter-dialog/affecter-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { firebaseConfig } from '../../environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+
 
 @NgModule({
   declarations: [
@@ -50,7 +57,10 @@ import { AffecterDialogComponent } from './affecter-dialog/affecter-dialog.compo
     OutilFormComponent,
     EvenementFormComponent,
     PublicationFormComponent,
+
     AffecterDialogComponent,
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -77,6 +87,8 @@ import { AffecterDialogComponent } from './affecter-dialog/affecter-dialog.compo
     MatRadioModule,
     MatSelectModule,
     NgChartsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
 
   ],
   providers: [],
